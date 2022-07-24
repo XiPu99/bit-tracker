@@ -10,8 +10,11 @@
 Run `python server.py` first to start the server and then you can use the command shown below to interact with the server.
 
 Use `python client.py add addr1 addr2 ...` to add wallet addresses
+
 Use `python client.py delete addr1 addr2 ...` to delete wallet addresses
+
 Use `python client.py gb` to get total balance for all your addresses
+
 Use `python client.py gt` to get all transaction data for all your addresses
 
 ### Note
