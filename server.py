@@ -86,12 +86,11 @@ class DefaultRequestHandler(BaseHTTPRequestHandler):
                     self._set_JSON_response({"error": f"wallet address {addr} does not exist"}, statusCode=HTTPStatus.BAD_REQUEST)
                     return
             self._set_JSON_response({"message": "deletion completes"})     
-        elif self.path.startswith(routes.POST_SYNC): # handle routes.POST_SYNC
-            addrs = json.loads(post_data.decode('utf-8'))["address"]
-            info = self.apiClient.getAddressInfo(addrs)
+        elif self.path.startswith(routes.POST_SYNC): # handle routes.POST_SYNC    
+            info = self.apiClient.getAddressInfo(self.wallets.keys())
             if info.get("addresses", None) is None:
-                self._set_JSON_response(statusCode=HTTPStatus.BAD_REQUEST, data={"error": "invalid wallet address"})            
-            self.syncWalletTxs(addresses=addrs, info=info)
+                self._set_JSON_response(statusCode=HTTPStatus.BAD_REQUEST, data={"error": "invalid wallet address"})  
+            self.syncWalletTxs(info=info)
             self._set_response()
         else:
             self.send_error(HTTPStatus.BAD_REQUEST)
