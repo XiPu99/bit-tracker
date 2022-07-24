@@ -4,7 +4,6 @@ import logging
 from tkinter.messagebox import NO
 from urllib.parse import parse_qs, urlparse
 
-import requests
 import routes
 import json
 import apiClient

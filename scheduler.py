@@ -1,6 +1,5 @@
 import schedule
 import time
-import requests
 
 def sync():
     # print("I'm working...", flush=True)
